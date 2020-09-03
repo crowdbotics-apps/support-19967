@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from rest_framework import authentication
 from .serializers import (
     CustomTextSerializer,
+    EpisodeSerializer,
     HomePageSerializer,
     PodcasterSerializer,
     SeasonSerializer,
@@ -19,7 +20,7 @@ from home.api.v1.serializers import (
     HomePageSerializer,
     UserSerializer,
 )
-from home.models import CustomText, HomePage, Podcaster, Season
+from home.models import CustomText, Episode, HomePage, Podcaster, Season
 
 
 class SignupViewSet(ModelViewSet):
@@ -75,3 +76,12 @@ class SeasonViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = Season.objects.all()
+
+
+class EpisodeViewSet(viewsets.ModelViewSet):
+    serializer_class = EpisodeSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Episode.objects.all()

@@ -57,6 +57,11 @@ class Podcaster(models.Model):
         null=True,
         blank=True,
     )
+    tags = models.ManyToManyField(
+        "home.Episode",
+        blank=True,
+        related_name="podcaster_tags",
+    )
 
 
 class Season(models.Model):
@@ -68,3 +73,18 @@ class Season(models.Model):
     )
     season_number = models.PositiveIntegerField()
     season_description = models.TextField()
+
+
+class Episode(models.Model):
+    "Generated Model"
+    season = models.ForeignKey(
+        "home.Season",
+        on_delete=models.CASCADE,
+        related_name="episode_season",
+    )
+    episode_number = models.PositiveIntegerField()
+    episode_description = models.TextField()
+    tags = models.ManyToManyField(
+        "home.Season",
+        related_name="episode_tags",
+    )

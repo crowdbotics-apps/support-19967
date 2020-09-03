@@ -2,6 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .viewsets import (
     CustomTextViewSet,
+    EpisodeViewSet,
     HomePageViewSet,
     PodcasterViewSet,
     SeasonViewSet,
@@ -21,6 +22,7 @@ router.register("customtext", CustomTextViewSet)
 router.register("homepage", HomePageViewSet)
 router.register("podcaster", PodcasterViewSet)
 router.register("season", SeasonViewSet)
+router.register("episode", EpisodeViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
