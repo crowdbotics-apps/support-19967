@@ -57,3 +57,14 @@ class Podcaster(models.Model):
         null=True,
         blank=True,
     )
+
+
+class Season(models.Model):
+    "Generated Model"
+    user = models.ForeignKey(
+        "home.Podcaster",
+        on_delete=models.CASCADE,
+        related_name="season_user",
+    )
+    season_number = models.PositiveIntegerField()
+    season_description = models.TextField()

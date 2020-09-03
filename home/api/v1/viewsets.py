@@ -1,6 +1,11 @@
 from rest_framework import viewsets
 from rest_framework import authentication
-from .serializers import CustomTextSerializer, HomePageSerializer, PodcasterSerializer
+from .serializers import (
+    CustomTextSerializer,
+    HomePageSerializer,
+    PodcasterSerializer,
+    SeasonSerializer,
+)
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.permissions import IsAdminUser
@@ -14,7 +19,7 @@ from home.api.v1.serializers import (
     HomePageSerializer,
     UserSerializer,
 )
-from home.models import CustomText, HomePage, Podcaster
+from home.models import CustomText, HomePage, Podcaster, Season
 
 
 class SignupViewSet(ModelViewSet):
@@ -61,3 +66,12 @@ class PodcasterViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = Podcaster.objects.all()
+
+
+class SeasonViewSet(viewsets.ModelViewSet):
+    serializer_class = SeasonSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Season.objects.all()
