@@ -73,6 +73,11 @@ class Season(models.Model):
     )
     season_number = models.PositiveIntegerField()
     season_description = models.TextField()
+    tag = models.ManyToManyField(
+        "home.Episode",
+        blank=True,
+        related_name="season_tag",
+    )
 
 
 class Episode(models.Model):
