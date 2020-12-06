@@ -22,6 +22,6 @@ django-extensions = "~=2.2.9"
 packaging = "*"
 drf-yasg = "~=1.17.1"
 # fcm-django is used for mobile notifications. It can be removed if unneeded.
-fcm-django = "~=0.3.4"
+fcm-django = "~=0.3.7"
 pyyaml = "~=5.3.1"
 
